@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm *)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing -TimeoutSec 60; \"STATUS: $\\($r.StatusCode\\)\"; \"LENGTH: $\\($r.Content.Length\\)\" } catch { \"ERROR: $\\($_.Exception.Message\\)\" })",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3000\" -UseBasicParsing; $html = $r.Content; \"Contains 'Vansh': $\\($html -match 'Vansh'\\)\"; \"Contains 'Mahendru': $\\($html -match 'Mahendru'\\)\"; \"Contains 'F1': $\\($html -match 'F1'\\)\"; \"Contains 'RAG': $\\($html -match 'RAG'\\)\"; \"Contains 'mygit72': $\\($html -match 'mygit72'\\)\"; \"Contains 'LinkedIn URL': $\\($html -match 'vansh-mahendru-ba00bb142'\\)\")"
+    ]
+  }
+}
