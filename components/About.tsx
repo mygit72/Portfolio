@@ -1,4 +1,5 @@
-import { PROFILE } from "@/lib/data";
+import Image from "next/image";
+import { PROFILE, ABOUT_GALLERY } from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 
 const STATS = [
@@ -63,6 +64,35 @@ export default function About() {
               <Row k="Based in" v={PROFILE.location} />
             </div>
           </aside>
+        </div>
+
+        {/* Editorial image strip */}
+        <div className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+          {ABOUT_GALLERY.map((item) => (
+            <figure
+              key={item.label}
+              className="group relative aspect-[4/3] overflow-hidden bg-carbon-800 border border-white/5"
+            >
+              <Image
+                src={item.src}
+                alt=""
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                className="object-cover grayscale-[0.4] transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 group-hover:scale-105"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(10,10,10,0.0) 40%, rgba(10,10,10,0.85) 100%)",
+                }}
+              />
+              <figcaption className="absolute bottom-4 left-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.32em] text-neutral-200">
+                <span className="block w-1.5 h-1.5 bg-rosso" />
+                {item.label}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/data";
 import SectionHeader from "./SectionHeader";
@@ -60,41 +61,35 @@ function FeaturedCard({
       }}
       className="group relative block overflow-hidden bg-carbon-800 border border-white/5 hover:border-rosso/60 transition-colors"
     >
-      {/* Gradient surface */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+      {/* Image surface */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-carbon">
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+        />
+
+        {/* Cinematic overlays */}
         <div
-          className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(80% 60% at 75% 30%, rgba(220,0,0,0.32) 0%, rgba(20,20,20,0.95) 60%, #0a0a0a 100%)",
+              "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 60%, rgba(10,10,10,0.92) 100%)",
           }}
         />
-        {/* Decorative grid */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-30"
-          aria-hidden
-        >
-          <defs>
-            <pattern
-              id={`grid-${project.slug}`}
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="rgba(255,255,255,0.06)"
-                strokeWidth="1"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill={`url(#grid-${project.slug})`} />
-        </svg>
+        <div
+          className="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-40"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 80% 20%, rgba(220,0,0,0.28) 0%, transparent 60%)",
+          }}
+        />
 
         {/* Big metric */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-display font-black uppercase tracking-tightest text-white text-5xl md:text-6xl lg:text-7xl text-center px-6">
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-6">
+          <span className="block font-display font-black uppercase tracking-tightest text-white text-3xl md:text-4xl lg:text-5xl leading-[0.9] drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
             {project.metric}
           </span>
         </div>
@@ -102,7 +97,7 @@ function FeaturedCard({
         {/* Category tag */}
         <div className="absolute top-5 left-5 flex items-center gap-2">
           <span className="block w-1.5 h-1.5 bg-rosso" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-neutral-300">
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-neutral-200">
             {project.category}
           </span>
         </div>
@@ -167,48 +162,67 @@ function ProjectCard({
         delay: index * 0.06,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative block bg-carbon-800 border border-white/5 hover:border-rosso/60 transition-colors p-7"
+      className="group relative block bg-carbon-800 border border-white/5 hover:border-rosso/60 transition-colors overflow-hidden"
     >
-      <div className="flex items-center gap-2 mb-5">
-        <span className="block w-1.5 h-1.5 bg-rosso" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-neutral-400">
-          {project.category}
-        </span>
-      </div>
-
-      <h3 className="font-display font-bold uppercase tracking-tight text-lg leading-tight mb-3 group-hover:text-rosso transition-colors min-h-[3.5rem]">
-        {project.title}
-      </h3>
-
-      <div className="font-display font-black tracking-tightest text-3xl md:text-4xl text-white mb-4">
-        {project.metric}
-      </div>
-
-      <p className="text-neutral-400 text-sm leading-relaxed mb-6 line-clamp-3">
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 mb-5">
-        {project.stack.slice(0, 4).map((s) => (
-          <span
-            key={s}
-            className="font-mono text-[9px] uppercase tracking-[0.18em] text-neutral-500 border border-white/10 px-1.5 py-0.5"
-          >
-            {s}
+      {/* Cover image */}
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.5) 60%, rgba(10,10,10,0.9) 100%)",
+          }}
+        />
+        <div className="absolute top-4 left-4 flex items-center gap-2">
+          <span className="block w-1.5 h-1.5 bg-rosso" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-neutral-200">
+            {project.category}
           </span>
-        ))}
+        </div>
       </div>
 
-      <div className="pt-4 border-t border-white/5 flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-[0.22em] text-neutral-500">
-          GitHub
-        </span>
-        <span
-          aria-hidden
-          className="text-rosso transition-transform group-hover:translate-x-1"
-        >
-          →
-        </span>
+      <div className="p-7">
+        <h3 className="font-display font-bold uppercase tracking-tight text-lg leading-tight mb-3 group-hover:text-rosso transition-colors min-h-[3.5rem]">
+          {project.title}
+        </h3>
+
+        <div className="font-display font-black tracking-tightest text-3xl md:text-4xl text-white mb-4">
+          {project.metric}
+        </div>
+
+        <p className="text-neutral-400 text-sm leading-relaxed mb-6 line-clamp-3">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {project.stack.slice(0, 4).map((s) => (
+            <span
+              key={s}
+              className="font-mono text-[9px] uppercase tracking-[0.18em] text-neutral-500 border border-white/10 px-1.5 py-0.5"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+
+        <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+          <span className="text-[10px] uppercase tracking-[0.22em] text-neutral-500">
+            GitHub
+          </span>
+          <span
+            aria-hidden
+            className="text-rosso transition-transform group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </div>
       </div>
     </motion.a>
   );

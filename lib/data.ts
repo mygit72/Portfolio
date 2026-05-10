@@ -7,8 +7,27 @@ export type Project = {
   metric: string;
   description: string;
   href: string;
+  image: string;
   featured?: boolean;
 };
+
+export const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1568525208344-30be1d3a4ed5?w=2400&q=85&auto=format&fit=crop";
+
+export const ABOUT_GALLERY = [
+  {
+    src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80&auto=format&fit=crop",
+    label: "Models",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop",
+    label: "Inference",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=1200&q=80&auto=format&fit=crop",
+    label: "Signals",
+  },
+];
 
 export const PROJECTS: Project[] = [
   {
@@ -21,6 +40,8 @@ export const PROJECTS: Project[] = [
     description:
       "Full ML pipeline — ingestion, feature engineering, XGBoost + Monte Carlo (10,000+ iterations), cross-validation, and real-time inference behind a FastAPI service. Modular, tested components catching regressions between pipeline stages.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1600&q=80&auto=format&fit=crop",
     featured: true,
   },
   {
@@ -33,6 +54,8 @@ export const PROJECTS: Project[] = [
     description:
       "End-to-end intelligence pipeline predicting revenue surprises in Indian retail stocks from satellite imagery (10,000+ records). Owned data contracts, training, evaluation, and sub-second inference.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1600&q=80&auto=format&fit=crop",
     featured: true,
   },
   {
@@ -45,6 +68,8 @@ export const PROJECTS: Project[] = [
     description:
       "Full RAG architecture: ingestion → chunking → embeddings → vector store → retrieval (top-k + MMR) → generation. LLM-as-judge eval harness scores factuality, relevance, and groundedness.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1600&q=80&auto=format&fit=crop",
   },
   {
     slug: "multi-tool-agent",
@@ -56,6 +81,8 @@ export const PROJECTS: Project[] = [
     description:
       "ReAct agent with web search, calculator, and file reader. OpenAI Assistants API for thread state. LLMOps discipline: prompt versioning, tool-call logging, failure tracing, regression tests.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&q=80&auto=format&fit=crop",
   },
   {
     slug: "lottery-ticket",
@@ -67,6 +94,8 @@ export const PROJECTS: Project[] = [
     description:
       "Iterative pruning framework producing lightweight, deployment-ready models. Systematic regression tests at every sparsity threshold; eval-and-harden loop mirroring production LLM workflows.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80&auto=format&fit=crop",
   },
   {
     slug: "oceanic-edge",
@@ -78,6 +107,8 @@ export const PROJECTS: Project[] = [
     description:
       "AI pipeline integrating NLP-style text processing and computer vision over AIS feeds and satellite imagery, deployed across 50+ global ports with continuous real-time inference.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=1600&q=80&auto=format&fit=crop",
   },
   {
     slug: "brain-tumour-detector",
@@ -89,6 +120,8 @@ export const PROJECTS: Project[] = [
     description:
       "Owned the full preprocessing → training → evaluation → inference pipeline. Data augmentation, class balancing, FastAPI inference endpoint, rigorous eval rubric across accuracy, F1, precision, recall.",
     href: "https://github.com/mygit72",
+    image:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1600&q=80&auto=format&fit=crop",
   },
 ];
 

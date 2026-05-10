@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { PROFILE } from "@/lib/data";
+import { PROFILE, HERO_IMAGE } from "@/lib/data";
 
 export default function Hero() {
   return (
@@ -9,16 +10,34 @@ export default function Hero() {
       id="top"
       className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden grain"
     >
-      {/* Background — radial gradient + diagonal accent */}
+      {/* Background — full-bleed photograph + cinematic overlays */}
       <div className="absolute inset-0 -z-10">
+        <motion.div
+          initial={{ scale: 1.12 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={HERO_IMAGE}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
+
+        {/* Cinematic colour wash + bottom fade */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(120% 80% at 70% 20%, rgba(220,0,0,0.18) 0%, rgba(10,10,10,1) 55%)",
+              "radial-gradient(120% 80% at 70% 20%, rgba(220,0,0,0.22) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.92) 75%)",
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(10,10,10,0.7)_70%,#0a0a0a_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.45)_0%,rgba(10,10,10,0.55)_40%,rgba(10,10,10,0.95)_85%,#0a0a0a_100%)]" />
+
         {/* Diagonal red streak */}
         <div
           aria-hidden
